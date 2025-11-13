@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(235, 239, 237);
+}
+
+canvas {
+    margin: auto;
+    border: 10px solid green;
+    padding: 0px;
+}
+
+.interface {
+    display: flex;
+    gap: 0px;
+}
+
+.switch {
+    height: 525px;
+    width: 200px;
+    justify-content: center;
+    min-height: 98vh;
+    margin: auto;
+    padding: 10px;
+    background-color: #04AA6D; /* Green */
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.reserve {
+    height: 545px;
+    width: 200px;
+    justify-content: center;
+    min-height: 98vh;
+    margin: auto;
+    padding: 10px;
+    background-color: #898b8a; /* Green */
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: not-allowed;
+}
