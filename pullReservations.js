@@ -38,7 +38,7 @@ function parseICSDateString(dateString) {
  * @async
  * @returns {Promise<Array<string>>} A promise that resolves to an array of blocked grid cell identifiers.
  */
-async function getBlockedGridCells() {
+export async function getBlockedGridCells() {
     try{
         let res = await fetch(url);
         let d = await res.text();
