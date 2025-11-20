@@ -1,0 +1,140 @@
+name: Fetch ICS for GitHub Pages
+
+# Citation / credit:
+# Modified by: GitHub Copilot (assistant)
+# Date: 2025-11-20
+# Purpose: Scheduled job to fetch an ICS calendar, parse blocked grid cells,
+#          and commit `data/calendar.ics` + `data/blockedCells.json` to the repo.
+# Contact: add an issue on the repository for questions.
+
+on:
+  schedule:
+    # GitHub Actions cron uses UTC. To run at 12:00 AM Eastern regardless of DST,
+    # include two entries: one for Eastern Standard Time (UTC-5) and one for
+    # Eastern Daylight Time (UTC-4). Exactly one will match depending on DST.
+    - cron: '0 5 * * *'  # 00:00 Eastern Standard Time (EST, UTC-5)
+    - cron: '0 4 * * *'  # 00:00 Eastern Daylight Time (EDT, UTC-4)
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+
+      - name: Generate blocked cells JSON from ICS
+        env:
+          CALENDAR_URL: ${{ secrets.CALENDAR_URL }}
+          CALENDAR_TOKEN: ${{ secrets.CALENDAR_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p data scripts
+          if [ -z "${CALENDAR_URL:-}" ]; then
+            echo "Error: CALENDAR_URL secret is not set" >&2
+            exit 1
+          fi
+
+          cat > scripts/generateBlockedCells.mjs <<'NODE'
+          import fs from 'fs';
+
+          const url = process.env.CALENDAR_URL;
+          const token = process.env.CALENDAR_TOKEN || '';
+
+          // Determine the run date in America/New_York to match the tablet's local midnight
+          const runDate = new Date();
+          const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'America/New_York' });
+          const parts = fmt.format(runDate).split('/'); // DD/MM/YYYY
+          const dateYYYYMMDD = parseInt(parts.reverse().join(''));
+
+          function parseICSDateString(dateString) {
+            return parseInt(dateString.substr(0, 8));
+          }
+
+          async function fetchText(url) {
+            const opts = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+            const res = await fetch(url, opts);
+            if (!res.ok) throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
+            return await res.text();
+          }
+
+          (async () => {
+            try {
+              const data = await fetchText(url);
+              // write raw calendar for debugging/audit
+              fs.writeFileSync('data/calendar.ics', data);
+
+              const events = data.split('END:VEVENT');
+              const blockedCells = [];
+              for (const event of events) {
+                if (!event.includes('BEGIN:VEVENT')) continue;
+
+                // extract DTSTART and DTEND robustly
+                const startMatch = event.match(/DTSTART[^:\n]*:(\d{8})/);
+                const endMatch = event.match(/DTEND[^:\n]*:(\d{8})/);
+                if (!startMatch || !endMatch) continue;
+                const startDate = parseICSDateString(startMatch[1]);
+                const endDate = parseICSDateString(endMatch[1]);
+
+                const locMatch = event.match(/LOCATION:([^\n\r]+)/);
+                if (!locMatch) continue;
+                let location = locMatch[1].split('X-')[0];
+                location = location.replace(/\\/g, '');
+                if ((startDate <= dateYYYYMMDD && endDate >= dateYYYYMMDD) || startDate == null || endDate == null) {
+                  const eventCells = location.split(/(?:,|;| )+/);
+                  for (const cell of eventCells) {
+                    const trimmed = cell.trim();
+                    if (trimmed) blockedCells.push(trimmed);
+                  }
+                }
+              }
+
+              blockedCells.sort();
+              fs.writeFileSync('data/blockedCells.json', JSON.stringify(blockedCells, null, 2));
+              console.log('Wrote data/blockedCells.json with', blockedCells.length, 'items');
+
+              // If we didn't produce any blocked cells, write a sentinel entry
+              // into the JSON array so the frontend can detect the error state.
+              if (!Array.isArray(blockedCells) || blockedCells.length === 0) {
+                const sentinel = ['ERROR; NO BLOCKED CELLS; CHECK CALENDAR'];
+                fs.writeFileSync('data/blockedCells.json', JSON.stringify(sentinel, null, 2));
+                console.error('No blocked cells produced — wrote error sentinel to data/blockedCells.json');
+                // Exit successfully so the commit step runs and the site gets the sentinel.
+                process.exit(0);
+              }
+            } catch (err) {
+              console.error('Error generating blocked cells:', err);
+              const sentinel = ['ERROR; CHECK CALENDAR FOR BLOCKED CELLS'];
+              fs.writeFileSync('data/blockedCells.json', JSON.stringify(sentinel, null, 2));
+              // Exit successfully so the commit step runs and the site gets the sentinel.
+              process.exit(0);
+            }
+          })();
+NODE
+
+          node scripts/generateBlockedCells.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/calendar.ics data/blockedCells.json || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update calendar and blockedCells (ci)"
+            git push
+          fi
+
+  # NOTE: Email notifications were removed per repository owner's request.
+  # Instead, on failure the generate step will write a special sentinel
+  # entry into `data/blockedCells.json` (e.g. ["ERROR; CHECK CALENDAR"]).
+  # The frontend will treat that sentinel as an error and refuse operation.
