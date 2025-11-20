@@ -118,7 +118,7 @@ jobs:
               process.exit(0);
             }
           })();
-NODE
+          NODE
 
           node scripts/generateBlockedCells.mjs
 
