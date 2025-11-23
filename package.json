@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "firebase": "^12.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdt44/mdt44.github.io.git"
   }
 }
