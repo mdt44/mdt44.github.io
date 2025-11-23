@@ -9,14 +9,7 @@ const numCol = 31;
 const numRow = 23;
 const reservedDif = 10000;
 
-var reservedSpots = [];
-var hunterSpots = [];
-
 var state = 0;
-        
-for (var i = 0;i < testSpots.length;i++){
-    reservedSpots.push(testSpots[i]);
-}
 
 var potentialSpot = -1;
 
@@ -108,3 +101,6 @@ document.getElementById("nextMap").onclick = function setState(){
     state = (state + 1) % 2;
     drawMap();
 }
+
+
+pullReserveSpots();
