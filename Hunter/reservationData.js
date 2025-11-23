@@ -7,6 +7,8 @@ var testSpots = [10, 20, 30, 40,
 
 async function pullReserveSpots(){
 
+    const thisDate = (new Date()).toISOString().split("T")[0];;
+
     console.log("yep it ran again");
 
     const researchRef = db

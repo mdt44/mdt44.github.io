@@ -90,7 +90,7 @@ function drawMap(){
                 ctx.fillStyle = "black";
                 ctx.fillRect(width / numCol * i, height / numRow * j, width / numCol, height / numRow);
             } else if (potentialSpot === loc){
-                ctx.fillStyle = "rgba(150, 0, 0, 0.5)";
+                ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
                 ctx.fillRect(width / numCol * i, height / numRow * j, width / numCol, height / numRow);
 
                 ctx.fillStyle = "rgba(200, 0, 0, 0.3)";
@@ -111,3 +111,19 @@ document.getElementById("nextMap").onclick = function setState(){
     state = (state + 1) % 2;
     drawMap();
 }
+
+
+function callEveryHour() {
+    setInterval(yourFunction, 1000 * 60 * 60);
+}
+
+function tick() {
+  //get the mins of the current time
+  var mins = new Date().getMinutes();
+  if (mins == "00") {
+    pullReserveSpots();
+  }
+  console.log('Tick ' + mins);
+}
+
+setInterval(tick, 1000);
