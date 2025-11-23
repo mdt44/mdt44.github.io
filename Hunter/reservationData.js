@@ -7,7 +7,7 @@ var testSpots = [10, 20, 30, 40,
 
 async function pullReserveSpots(){
 
-    const thisDate = (new Date()).toISOString().split("T")[0];;
+    const thisDate = (new Date()).toISOString().split("T")[0];
 
     console.log("yep it ran again");
 
@@ -21,7 +21,9 @@ async function pullReserveSpots(){
 
     const hunterRef = db
         .collection("reserved")
-        .doc("hunters");
+        .doc("hunters")
+        .collection("dates")
+        .doc(thisDate);
     const snapH = await hunterRef.get();
     const cellsH = snapH.data()?.cells;
 

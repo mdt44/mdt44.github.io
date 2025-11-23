@@ -41,13 +41,18 @@ map.addEventListener("click", (event) => {
 });
 
 async function addHunter(spot){
+    
+    const thisDate = (new Date()).toISOString().split("T")[0];
+    
     const hunterRef = db
         .collection("reserved")
-        .doc("hunters");
+        .doc("hunters")
+        .collection("dates")
+        .doc(thisDate);
 
-    await hunterRef.update({
+    await hunterRef.set({
         cells: firebase.firestore.FieldValue.arrayUnion(spot)
-    });
+    }, { merge: true });
 
     console.log("oh yeah");
 }
