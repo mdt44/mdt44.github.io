@@ -21,10 +21,10 @@ for (var i = 0;i < testSpots.length;i++){
 var potentialSpot = -1;
 
 const img1 = new Image();
-img1.src = "KorstianMap(1).jpg"
+img1.src = "../Images/KorstianMap(1).jpg"
 
 const img2 = new Image();
-img2.src = "KorstianMap(2).jpg"
+img2.src = "../Images/KorstianMap(2).jpg"
 
 const reserveButton = document.getElementById("reserveCell");
 const map = document.getElementById("mapCanvas");
