@@ -11,7 +11,9 @@ async function pullReserveSpots(){
 
     const researchRef = db
         .collection("reserved")
-        .doc("researchers");
+        .doc("researchers")
+        .collection("dates")
+        .doc(thisDate);
     const snap = await researchRef.get();
     const cells = snap.data()?.cells;
 

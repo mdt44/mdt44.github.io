@@ -1,16 +1,17 @@
 
 var reservedSpots = [];
 
-var testSpots = [10, 20, 30, 40,
-            10021, 10054, 10142]; //testing of researcher reservations
-
 async function pullReserveSpots(){
 
     console.log("yep it ran again");
 
+    const thisDate = document.getElementById("userDate").value;
+    
     const researchRef = db
         .collection("reserved")
-        .doc("researchers");
+        .doc("researchers")
+        .collection("dates")
+        .doc(thisDate);
     const snap = await researchRef.get();
     const cells = snap.data()?.cells;
 

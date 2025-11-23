@@ -18,7 +18,7 @@ canvas {
     height: 525px;
     width: 200px;
     justify-content: center;
-    min-height: 75vh;
+    min-height: 55vh;
     margin: auto;
     padding: 10px;
     background-color: rgb(200, 0, 0); /* Green */
@@ -33,7 +33,7 @@ canvas {
     width: 545px;
     justify-content: center;
     min-width: 60vw;
-    max-height: 20vh;
+    max-height: 17vh;
     margin: auto;
     padding: 10px;
     background-color: rgb(200, 0, 0); /* Green */
@@ -48,7 +48,7 @@ canvas {
     width: 545px;
     justify-content: center;
     min-width: 28vw;
-    max-height: 20vh;
+    max-height: 17vh;
     margin: auto;
     padding: 10px;
     background-color: rgb(200, 0, 0); /* Green */
@@ -56,4 +56,24 @@ canvas {
     border: none;
     font-size: 25px;
     cursor: pointer;
+}
+
+
+.date-bar {
+    width: 96vw;
+    padding: 20px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.date-input {
+    font-size: 1.3rem;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }

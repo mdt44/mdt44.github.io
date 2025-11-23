@@ -1,4 +1,7 @@
 
+var date = new Date();
+console.log(date.toDateString());
+
 const canvas = document.getElementById("mapCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -40,13 +43,18 @@ map.addEventListener("click", (event) => {
 });
 
 async function addResearch(spots){
+
+    const thisDate = document.getElementById("userDate").value;
+
     const researchRef = db
         .collection("reserved")
-        .doc("researchers");
+        .doc("researchers")
+        .collection("dates")
+        .doc(thisDate);
 
-    await researchRef.update({
+    await researchRef.set({
         cells: firebase.firestore.FieldValue.arrayUnion(...spots)
-    });
+    }, { merge: true });
 
     console.log("oh yeah");
 }
