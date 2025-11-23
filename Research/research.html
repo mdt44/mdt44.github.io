@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Duke Forest Hunting Reservation</title>
+</head>
+<body>
+
+    <div class="interface">
+        <canvas id="mapCanvas" width="700px" height="525px"></canvas>
+        <button class="switch" id="nextMap">Switch Maps</button>
+    </div>
+
+    <div class="interface">
+    <button class="reserve" id="reserveCell">Reserve Cells</button>
+    <button class="reserve2" id="clearReserve">Clear Selection</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
+
+    <script src="../Firebase/firebase.js"></script>
+    <script src="reservationData.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

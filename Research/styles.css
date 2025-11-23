@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(235, 239, 237);
+}
+
+canvas {
+    margin: auto;
+    border: 10px solid rgb(200, 0, 0);
+    padding: 0px;
+}
+
+.interface {
+    display: flex;
+    gap: 0px;
+    padding: 5px;
+}
+
+.switch {
+    height: 525px;
+    width: 200px;
+    justify-content: center;
+    min-height: 75vh;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(200, 0, 0); /* Green */
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.reserve {
+    height: 200px;
+    width: 545px;
+    justify-content: center;
+    min-width: 60vw;
+    max-height: 20vh;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(200, 0, 0); /* Green */
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.reserve2 {
+    height: 200px;
+    width: 545px;
+    justify-content: center;
+    min-width: 28vw;
+    max-height: 20vh;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(200, 0, 0); /* Green */
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
