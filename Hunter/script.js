@@ -109,5 +109,5 @@ img1.onload = function(){
 
 document.getElementById("nextMap").onclick = function setState(){
     state = (state + 1) % 2;
-    pullReserveSpots();
+    drawMap();
 }
