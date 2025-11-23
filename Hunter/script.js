@@ -40,15 +40,28 @@ map.addEventListener("click", (event) => {
     }
 });
 
+async function addHunter(spot){
+    const hunterRef = db
+        .collection("reserved")
+        .doc("hunters");
+
+    await hunterRef.update({
+        cells: firebase.firestore.FieldValue.arrayUnion(spot)
+    });
+
+    console.log("oh yeah");
+}
+
 reserveButton.addEventListener("click", () => {
     if(potentialSpot > reservedDif * (state)){
-        hunterSpots.push(potentialSpot);
+        addHunter(potentialSpot);
         potentialSpot = -1;
-        drawMap();
+        pullReserveSpots();
     }
 });
 
 function drawMap(){
+
     ctx.clearRect(0, 0, width, height);
         
     ctx.drawImage(state === 0 ? img1 : img2, 0, 0, width, height);
@@ -91,16 +104,10 @@ function drawMap(){
 }
 
 img1.onload = function(){
-    drawMap();
-}
-img2.onload = function(){
-    drawMap();
+    pullReserveSpots();
 }
 
 document.getElementById("nextMap").onclick = function setState(){
     state = (state + 1) % 2;
-    drawMap();
+    pullReserveSpots();
 }
-
-
-pullReserveSpots();

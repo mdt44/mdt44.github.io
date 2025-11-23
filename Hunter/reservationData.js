@@ -1,5 +1,5 @@
 
-var reservedSpots = [15];
+var reservedSpots = [];
 var hunterSpots = [];
 
 var testSpots = [10, 20, 30, 40,
@@ -7,27 +7,25 @@ var testSpots = [10, 20, 30, 40,
 
 async function pullReserveSpots(){
 
-    console.log(1);
+    console.log("yep it ran again");
 
-    /*db.collection("reserved").doc("hunters").collection("cells").get().then((querySnapshot) =>
-        querySnapshot.forEach(() =>
-            reservedSpots.push(querySnapshot);
+    const researchRef = db
+        .collection("reserved")
+        .doc("researchers");
+    const snap = await researchRef.get();
+    const cells = snap.data()?.cells;
 
-    );*/
-    const ref = doc(db, "collectionName", "docId");
-    const snap = await getDoc(ref);
+    const hunterRef = db
+        .collection("reserved")
+        .doc("hunters");
+    const snapH = await hunterRef.get();
+    const cellsH = snapH.data()?.cells;
 
-    /*if (snap.exists()) {
-        const data = snap.data();
-        const myArray = data.myArrayField; // <-- now your array is equal to Firestore array
-        console.log(myArray);
-    }*/
+    reservedSpots = [];
+    (cells ?? []).forEach(value => reservedSpots.push(value));
 
-    console.log(1);
-
-    for (var i = 0;i < testSpots.length;i++){
-        reservedSpots.push(testSpots[i]);
-    }
+    hunterSpots = [];
+    (cellsH ?? []).forEach(value => hunterSpots.push(value));
 
     drawMap();
 
