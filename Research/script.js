@@ -32,7 +32,7 @@ map.addEventListener("click", (event) => {
     console.log(x);
     console.log(y);
     if(x > 0 && y > 0){
-        const pos = Math.floor(x / (width / numCol) - 0.5) + Math.floor(y / (height / numRow) - 0.5) * numCol + reservedDif * (state);
+        const pos = Math.floor(x / (width / numCol)) + Math.floor(y / (height / numRow)) * numCol + reservedDif * (state);
 
         if (!reservedSpots.includes(pos) && !potentialSpots.includes(pos)){
             potentialSpots.push(pos);
