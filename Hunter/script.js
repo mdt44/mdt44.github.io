@@ -2,6 +2,9 @@
 const canvas = document.getElementById("mapCanvas");
 const ctx = canvas.getContext("2d");
 
+ctx.canvas.width = 4/3 * window.innerHeight * 0.95;
+ctx.canvas.height = window.innerHeight * 0.95;
+
 //creating base map
 const width = canvas.width; 
 const height = canvas.height;
@@ -25,8 +28,6 @@ map.addEventListener("click", (event) => {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    console.log(x);
-    console.log(y);
     if(x > 0 && y > 0){
         const pos = Math.floor(x / (width / numCol)) + Math.floor(y / (height / numRow)) * numCol + reservedDif * (state);
 
@@ -54,7 +55,6 @@ async function addHunter(spot){
         cells: firebase.firestore.FieldValue.arrayUnion(spot)
     }, { merge: true });
 
-    console.log("oh yeah");
 }
 
 reserveButton.addEventListener("click", () => {
@@ -128,7 +128,6 @@ function tick() {
   if (mins == "00") {
     pullReserveSpots();
   }
-  console.log('Tick ' + mins);
 }
 
 setInterval(tick, 1000);

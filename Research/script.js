@@ -1,6 +1,5 @@
 
 var date = new Date();
-console.log(date.toDateString());
 
 const canvas = document.getElementById("mapCanvas");
 const ctx = canvas.getContext("2d");
@@ -29,8 +28,6 @@ map.addEventListener("click", (event) => {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    console.log(x);
-    console.log(y);
     if(x > 0 && y > 0){
         const pos = Math.floor(x / (width / numCol)) + Math.floor(y / (height / numRow)) * numCol + reservedDif * (state);
 
@@ -55,8 +52,6 @@ async function addResearch(spots){
     await researchRef.set({
         cells: firebase.firestore.FieldValue.arrayUnion(...spots)
     }, { merge: true });
-
-    console.log("oh yeah");
 }
 
 reserveButton.addEventListener("click", () => {

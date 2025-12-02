@@ -2,14 +2,9 @@
 var reservedSpots = [];
 var hunterSpots = [];
 
-var testSpots = [10, 20, 30, 40,
-            10021, 10054, 10142]; //testing of researcher reservations
-
 async function pullReserveSpots(){
 
     const thisDate = (new Date()).toISOString().split("T")[0];
-
-    console.log("yep it ran again");
 
     const researchRef = db
         .collection("reserved")
