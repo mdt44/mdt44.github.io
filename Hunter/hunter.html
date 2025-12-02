@@ -9,10 +9,15 @@
 <body>
 
     <div class="interface">
-        <canvas id="mapCanvas" width="80%" height="60%"></canvas>
-        <button class="switch" id="nextMap">Switch Maps</button>
-        <button class="reserve" id="reserveCell">Reserve Cell</button>
+        <button class="side" id="nextMap">Switch<br>Maps</button>
+        <canvas id="mapCanvas"></canvas>
+        <button class="side" id="cancelCell">Cancel<br>Selection</button>
     </div>
+
+    <center>
+        <h1 id="Map Title">Korstian Division</h1>
+        <button class="reserve" id="reserveCell">Reserve Cell</button>
+    </center>
 
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>

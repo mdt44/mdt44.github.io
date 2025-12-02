@@ -2,8 +2,8 @@
 const canvas = document.getElementById("mapCanvas");
 const ctx = canvas.getContext("2d");
 
-ctx.canvas.width = 4/3 * window.innerHeight * 0.95;
-ctx.canvas.height = window.innerHeight * 0.95;
+ctx.canvas.width = 4/3 * window.innerHeight * 0.82;
+ctx.canvas.height = window.innerHeight * 0.82;
 
 //creating base map
 const width = canvas.width; 
@@ -23,6 +23,7 @@ const img2 = new Image();
 img2.src = "../Images/KorstianMap(2).jpg"
 
 const reserveButton = document.getElementById("reserveCell");
+const cancelButton = document.getElementById("cancelCell");
 const map = document.getElementById("mapCanvas");
 map.addEventListener("click", (event) => {
     const rect = canvas.getBoundingClientRect();
@@ -65,6 +66,32 @@ reserveButton.addEventListener("click", () => {
     }
 });
 
+cancelButton.addEventListener("click", () => {
+    potentialSpot = -1;
+    drawMap();
+});
+
+function updateTitle(timing){
+    var mapTitle = document.getElementById("Map Title");
+    if(potentialSpot * (state * -2 + 1) <= reservedDif * (state * -2 + 1) && potentialSpot >= 0){
+        mapTitle.style.display = "none";
+        reserveButton.style.display = "block";
+        if (timing % 2 == 0){
+            reserveButton.textContent = "⚠️ Click Here To Reserve Your Cell ⚠️";
+        } else{
+            reserveButton.textContent = "Click Here To Reserve Your Cell";
+        }
+    } else{
+        mapTitle.style.display = "block";
+        reserveButton.style.display = "none";
+        if (state == 0){
+            mapTitle.textContent = "Korstian Division";
+        } else{
+            mapTitle.textContent = "Durham Division";
+        }
+    }
+}
+
 function drawMap(){
 
     ctx.clearRect(0, 0, width, height);
@@ -74,7 +101,7 @@ function drawMap(){
     ctx.beginPath();
 
     const reserveButton = document.getElementById("reserveCell");
-    if(potentialSpot * (state * -2 + 1) <= reservedDif * (state * -2 + 1)){
+    if(potentialSpot * (state * -2 + 1) <= reservedDif * (state * -2 + 1) && potentialSpot >= 0){
         reserveButton.style.cursor = "pointer";
         reserveButton.style.background = "#04AA6D";
     } else{
@@ -106,6 +133,8 @@ function drawMap(){
             }
         }
     }
+
+    updateTitle(new Date().getSeconds());
 }
 
 img1.onload = function(){
@@ -118,10 +147,6 @@ document.getElementById("nextMap").onclick = function setState(){
 }
 
 
-function callEveryHour() {
-    setInterval(yourFunction, 1000 * 60 * 60);
-}
-
 function tick() {
   //get the mins of the current time
   var mins = new Date().getMinutes();
@@ -130,4 +155,10 @@ function tick() {
   }
 }
 
-setInterval(tick, 1000);
+setInterval(tick, 1000 * 30);
+
+function tickDraw() {
+  updateTitle(new Date().getSeconds());
+}
+
+setInterval(tickDraw, 500);
