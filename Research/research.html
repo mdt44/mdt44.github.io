@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <title>Duke Forest Hunting Reservation</title>
+    <title>Employee (Non-Hunting) Reservations - Duke Forest Deer Herd Reduction Program</title>
 </head>
 <body>
 
     <div class="date-bar">
-        <input type="date" class="date-input" id="userDate" />
+        <input type="date" class="date-input" id="userDate"/>
     </div>
 
     <div class="interface">
-        <canvas id="mapCanvas" width="700px" height="525px"></canvas>
-        <button class="switch" id="nextMap">Switch Maps</button>
+        <button class="sideR" id="nextMap">Switch<br>Maps</button>
+        <canvas id="mapCanvas"></canvas>
+        <button class="sideR" id="clearReserve">Cancel<br>Selection</button>
     </div>
 
-    <div class="interface">
-    <button class="reserve" id="reserveCell">Reserve Cells</button>
-    <button class="reserve2" id="clearReserve">Clear Selection</button>
-    </div>
+    <center>
+        <h1 id="Map Title">Korstian Division</h1>
+        <button class="reserve" id="reserveCell">Reserve Cell</button>
+    </center>
 
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
 
     <script src="../Firebase/firebase.js"></script>
+    <script src="../login.js"></script>
     <script src="dates.js"></script>
     <script src="../reservationData.js"></script>
     <script src="script.js"></script>

@@ -7,5 +7,5 @@ document.getElementById("userDate").setAttribute("value", minDate);
 
 document.getElementById("userDate").addEventListener("change", function() {
     console.log("Selected date:", this.value);
-    pullReserveSpots();
+    pullReserveSpots(this.value);
 });

@@ -76,10 +76,11 @@ function updateTitle(timing){
     if(potentialSpot * (state * -2 + 1) <= reservedDif * (state * -2 + 1) && potentialSpot >= 0){
         mapTitle.style.display = "none";
         reserveButton.style.display = "block";
+        reserveButton.textContent = "Click Here To Reserve Your Cell";
         if (timing % 2 == 0){
-            reserveButton.textContent = "⚠️ Click Here To Reserve Your Cell ⚠️";
+            reserveButton.style.background = "rgb(200, 100, 100)";
         } else{
-            reserveButton.textContent = "Click Here To Reserve Your Cell";
+            reserveButton.style.background = "rgb(180, 70, 70)";
         }
     } else{
         mapTitle.style.display = "block";
@@ -146,7 +147,6 @@ document.getElementById("nextMap").onclick = function setState(){
     drawMap();
 }
 
-
 function tick() {
   //get the mins of the current time
   var mins = new Date().getMinutes();
@@ -157,8 +157,10 @@ function tick() {
 
 setInterval(tick, 1000 * 30);
 
+var i = 0;
 function tickDraw() {
-  updateTitle(new Date().getSeconds());
+    i = (i + 1) % 2;
+    updateTitle(i);
 }
 
 setInterval(tickDraw, 500);

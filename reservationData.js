@@ -2,9 +2,13 @@
 var reservedSpots = [];
 var hunterSpots = [];
 
-async function pullReserveSpots(){
+async function pullReserveSpots(thisDate){
 
-    const thisDate = (new Date()).toISOString().split("T")[0];
+    if (thisDate === null){
+        thisDate = (new Date()).toISOString().split("T")[0];
+    }
+
+    //thisDate = (thisDate).toISOString().split("T")[0];
 
     const researchRef = db
         .collection("reserved")

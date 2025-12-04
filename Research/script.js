@@ -1,8 +1,15 @@
 
-var date = new Date();
+if(!checkPassword(sessionStorage.getItem("passwordSaved"))){
+    window.location.replace("mdt44.github.io/Password/password.html");
+}
 
 const canvas = document.getElementById("mapCanvas");
 const ctx = canvas.getContext("2d");
+
+ctx.canvas.width = 4/3 * window.innerHeight * 0.75;
+ctx.canvas.height = window.innerHeight * 0.75;
+
+var date = new Date();
 
 //creating base map
 const width = canvas.width; 
@@ -24,6 +31,7 @@ img2.src = "../Images/KorstianMap(2).jpg"
 const reserveButton = document.getElementById("reserveCell");
 const clearButton = document.getElementById("clearReserve");
 const map = document.getElementById("mapCanvas");
+
 map.addEventListener("click", (event) => {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
@@ -58,7 +66,8 @@ reserveButton.addEventListener("click", () => {
     if (potentialSpots.length > 0){
         addResearch(potentialSpots);
         potentialSpots = [];
-        pullReserveSpots();
+        const thisDate = document.getElementById("userDate").value;
+        pullReserveSpots(thisDate);
     }
 });
 
@@ -66,6 +75,28 @@ clearButton.addEventListener("click", () => {
     potentialSpots = [];
     drawMap();
 });
+
+function updateTitle(timing){
+    var mapTitle = document.getElementById("Map Title");
+    if(potentialSpots.length > 0){
+        mapTitle.style.display = "none";
+        reserveButton.style.display = "block";
+        reserveButton.textContent = "Click Here To Reserve Your Cell";
+        if (timing % 2 == 0){
+            reserveButton.style.background = "rgb(200, 100, 100)";
+        } else{
+            reserveButton.style.background = "rgb(180, 70, 70)";
+        }
+    } else{
+        mapTitle.style.display = "block";
+        reserveButton.style.display = "none";
+        if (state == 0){
+            mapTitle.textContent = "Korstian Division";
+        } else{
+            mapTitle.textContent = "Durham Division";
+        }
+    }
+}
 
 function drawMap(){
 
@@ -100,11 +131,16 @@ function drawMap(){
     }
 }
 
-img1.onload = function(){
-    pullReserveSpots();
-}
-
 document.getElementById("nextMap").onclick = function setState(){
     state = (state + 1) % 2;
     drawMap();
 }
+
+var i = 0;
+function tickDraw() {
+    i = (i + 1) % 2;
+    updateTitle(i);
+}
+
+setInterval(tickDraw, 500);
+
