@@ -136,6 +136,10 @@ document.getElementById("nextMap").onclick = function setState(){
     drawMap();
 }
 
+img1.onload = function(){
+    pullReserveSpots();
+}
+
 var i = 0;
 function tickDraw() {
     i = (i + 1) % 2;
