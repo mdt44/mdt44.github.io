@@ -18,8 +18,12 @@ form.addEventListener("submit", async (e) => {
       return;
     }
     sessionStorage.setItem("passwordSaved", password);
+    console.log(password);
+    console.log(" " + sessionStorage.getItem("passwordSaved"));
+    
+    var checking = checkPassword(sessionStorage.getItem("passwordSaved"));
 
-    if(checkPassword(sessionStorage.getItem("passwordSaved")) === true){
+    if(checking === true){
         window.location.replace("https://mdt44.github.io/Research/research.html");
     } else{
         var yeah = sessionStorage.getItem("passwordSaved");
