@@ -22,9 +22,11 @@ form.addEventListener("submit", async (e) => {
     console.log(" " + sessionStorage.getItem("passwordSaved"));
     
     var checking = checkPassword(sessionStorage.getItem("passwordSaved"));
+    console.log(checking);
 
     if(checking === true){
-        window.location.replace("https://mdt44.github.io/Research/research.html");
+        console.log("GO TO THE WEBSITE");
+        //window.location.replace("https://mdt44.github.io/Research/research.html");
     } else{
         var yeah = sessionStorage.getItem("passwordSaved");
     }

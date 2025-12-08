@@ -11,7 +11,12 @@ async function checkPassword(value){
     console.log(pass);
     console.log(value);
     console.log(pass === value);
-    return value === pass;
+
+    if(value === pass){
+        window.location.replace("https://mdt44.github.io/Research/research.html");
+    } else{
+        window.location.replace("https://mdt44.github.io/Password/password.html");
+    }
 
 }
 
