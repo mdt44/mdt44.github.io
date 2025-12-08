@@ -1,7 +1,5 @@
 
-if(checkPassword(sessionStorage.getItem("passwordSaved")) === true){
-    window.location.replace("https://mdt44.github.io/Research/research.html");
-}
+checkPasswordPass(sessionStorage.getItem("passwordSaved"));
 
 const form = document.getElementById("auth-form");
 const submitBtn = document.getElementById("submit-btn");
@@ -21,15 +19,7 @@ form.addEventListener("submit", async (e) => {
     console.log(password);
     console.log(" " + sessionStorage.getItem("passwordSaved"));
     
-    var checking = checkPassword(sessionStorage.getItem("passwordSaved"));
-    console.log(checking);
-
-    if(checking === true){
-        console.log("GO TO THE WEBSITE");
-        //window.location.replace("https://mdt44.github.io/Research/research.html");
-    } else{
-        var yeah = sessionStorage.getItem("passwordSaved");
-    }
+    checkPasswordPass(sessionStorage.getItem("passwordSaved"));
 
     return;
 });
