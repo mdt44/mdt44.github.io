@@ -4,7 +4,7 @@ var hunterSpots = [];
 
 async function pullReserveSpots(thisDate){
 
-    if (thisDate === null){
+    if (thisDate === undefined){
         thisDate = (new Date()).toISOString().split("T")[0];
     }
 

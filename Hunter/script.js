@@ -59,7 +59,7 @@ async function addHunter(spot){
 }
 
 reserveButton.addEventListener("click", () => {
-    if(potentialSpot * (state * -2 + 1) <= reservedDif * (state * -2 + 1)){
+    if(potentialSpot * (state * -2 + 1) <= reservedDif * (state * -2 + 1) && potentialSpot >= 0){
         addHunter(potentialSpot);
         potentialSpot = -1;
         pullReserveSpots();

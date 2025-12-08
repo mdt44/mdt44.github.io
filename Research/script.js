@@ -1,5 +1,5 @@
 
-if(!checkPassword(sessionStorage.getItem("passwordSaved"))){
+if(checkPassword(sessionStorage.getItem("passwordSaved")) !== true){
     window.location.replace("mdt44.github.io/Password/password.html");
 }
 
