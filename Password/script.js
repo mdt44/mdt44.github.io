@@ -1,6 +1,6 @@
 
 if(checkPassword(sessionStorage.getItem("passwordSaved")) === true){
-    window.location.replace("mdt44.github.io/Research/research.html");
+    window.location.replace("https://mdt44.github.io/Research/research.html");
 }
 
 const form = document.getElementById("auth-form");
@@ -20,7 +20,7 @@ form.addEventListener("submit", async (e) => {
     sessionStorage.setItem("passwordSaved", password);
 
     if(checkPassword(sessionStorage.getItem("passwordSaved")) === true){
-        window.location.replace("mdt44.github.io/Research/research.html");
+        window.location.replace("https://mdt44.github.io/Research/research.html");
     } else{
         var yeah = sessionStorage.getItem("passwordSaved");
     }

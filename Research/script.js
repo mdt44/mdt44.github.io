@@ -1,6 +1,6 @@
 
 if(checkPassword(sessionStorage.getItem("passwordSaved")) !== true){
-    window.location.replace("mdt44.github.io/Password/password.html");
+    window.location.replace("https://mdt44.github.io/Password/password.html");
 }
 
 const canvas = document.getElementById("mapCanvas");
