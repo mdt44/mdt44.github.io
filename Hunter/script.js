@@ -147,6 +147,10 @@ document.getElementById("nextMap").onclick = function setState(){
     drawMap();
 }
 
+document.getElementById("checkoutAccess").onclick = function goToCheckout(){
+    window.location.replace("https://mdt44.github.io/Checkout/checkout.html");
+}
+
 function tick() {
   //get the mins of the current time
   var mins = new Date().getMinutes();

@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <title>Hunting Reservations - Duke Forest Deer Herd Reduction Program</title>
+    <title>Checkout - Duke Forest Deer Herd Reduction Program</title>
 </head>
 <body>
 
-    <div class="interface">
-        <button class="side" id="nextMap">Switch<br>Maps</button>
-        <canvas id="mapCanvas"></canvas>
-        <button class="side" id="cancelCell">Cancel<br>Selection</button>
-    </div>
-
     <center>
-        <h1 id="Map Title">Korstian Division</h1>
-        <button class="reserve" id="reserveCell">Reserve Cell</button>
-    </center>
 
-    <button id="checkoutAccess">Go to Checkout</button>
+    <h1>Checkout</h1>
+
+    <h3>Enter your two-digit Hunter ID</h3>
+    <input type="number" id="id">
+    <br>
+
+    <h3>Enter the number of Deer Caught</h3>
+    <input type="number" id="deerCaught">
+    <br>
+    
+    <br><br><br>
+
+    <button id="submit">Submit</button>
+    <br><br><br>
+
+    <button id="return">Return to Map</button>
+    <br>
+
+    </center>
 
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>
