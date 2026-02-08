@@ -1,11 +1,11 @@
 body {
-    background: rgb(240,240,240);
-    font: 'Roboto' sans-serif;
+    background: rgb(105,105,105);
+    font: 'verdana' sans-serif;
     height: 97vh;
 }
 
 h1 {
-    font-size: 4vh;
+    font-size: 5vh;
 }
 
 .interface {
