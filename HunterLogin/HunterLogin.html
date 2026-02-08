@@ -13,11 +13,34 @@
     <h1>Checkout</h1>
 
     <h3>Enter your two-digit Hunter ID</h3>
-    <input type="number" id="id">
+    <select id="hunterNumber">
+    <script>
+        let numberSelect = document.getElementById('hunterNumber');
+
+        for (var i = 0; i<=50; i++){
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = i;
+            select.appendChild(opt);
+        }
+    </script>
+    </select>
     <br>
 
-    <h3>Enter the number of Deer Caught</h3>
-    <input type="number" id="deerCaught">
+    <h3>Enter your first name initial</h3>
+    <select id="hunterInitial">
+    <script>
+        const initials = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let initialSelect = document.getElementById('hunterInitial');
+
+        for (var i = 0; i<initials.length; i++){
+            var opt = document.createElement('option');
+            opt.value = initials.charAt(i);
+            opt.innerHTML = initials.charAt(i);
+            select.appendChild(opt);
+        }
+    </script>
+    </select>
     <br>
     
     <br><br><br>
