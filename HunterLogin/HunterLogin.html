@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>Hunter Login - Duke Forest Deer Herd Reduction Program</title>
+</head>
+<body>
+
+    <center>
+
+    <h1>Checkout</h1>
+
+    <h3>Enter your two-digit Hunter ID</h3>
+    <input type="number" id="id">
+    <br>
+
+    <h3>Enter the number of Deer Caught</h3>
+    <input type="number" id="deerCaught">
+    <br>
+    
+    <br><br><br>
+
+    <button id="submit">Submit</button>
+    <br><br><br>
+
+    <button id="return">Return to Map</button>
+    <br>
+
+    </center>
+
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
+
+    <script src="../Firebase/firebase.js"></script>
+    <script src="../reservationData.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
