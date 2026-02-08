@@ -1,4 +1,35 @@
 
+var stage = 0;
+
+
+var decrease = document.getElementById("decrease");
+var increase = document.getElementById("increase");
+var deerCaught = document.getElementById("deerCaught");
+
+var deerCaughtNum = 0;
+
+decrease.onclick = function(){
+    if (deerCaughtNum > 0){
+        deerCaughtNum--;
+        deerCaught.textContent = deerCaughtNum;
+    }
+};
+
+increase.onclick = function(){
+    if (deerCaughtNum < 10){
+        deerCaughtNum++;
+        deerCaught.textContent = deerCaughtNum;
+    }
+};
+
+document.getElementById("deerSubmit").onclick = function(){
+    addData(document.getElementById("id").value);
+    window.location.replace("https://mdt44.github.io/Hunter/hunter.html");
+};
+
+
+
+
 async function addData(Id){
 
     console.log(Id);
