@@ -10,7 +10,7 @@
 
     <center>
 
-    <h1>Checkout</h1>
+    <h1>Login</h1>
 
     <h3>Enter your two-digit Hunter ID</h3>
     <select id="hunterNumber">
@@ -21,7 +21,7 @@
             var opt = document.createElement('option');
             opt.value = i;
             opt.innerHTML = i;
-            select.appendChild(opt);
+            numberSelect.appendChild(opt);
         }
     </script>
     </select>
@@ -37,7 +37,7 @@
             var opt = document.createElement('option');
             opt.value = initials.charAt(i);
             opt.innerHTML = initials.charAt(i);
-            select.appendChild(opt);
+            initialSelect.appendChild(opt);
         }
     </script>
     </select>
