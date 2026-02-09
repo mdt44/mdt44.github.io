@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="checkout.css">
     <title>Checkout - Duke Forest Deer Herd Reduction Program</title>
 </head>
 <body>
@@ -12,18 +12,27 @@
 
     <h1>Checkout</h1>
 
-    <h3>Enter your two-digit Hunter ID</h3>
-    <input type="number" id="id">
+    <h2>Enter the number of Deer Caught</h2>
+    <button id=increase>⬆️</button>
     <br>
+    <span id="deerCaught">0</span>
+    <br>
+    <button id=decrease>⬇️</button>
 
-    <h3>Enter the number of Deer Caught</h3>
-    <input type="number" id="deerCaught">
-    <br>
+    <br><br><br>
     
-    <br><br><br>
+    <h2 id="deerTitle">Deer #1 Type:</h2>
+    <h3 id="deerType">----</h3>
+    <button id="buck">Buck</button>
+    <button id="button">Button</button>
+    <button id="doe">Doe</button>
+    <br><br>
+    <button id="prev">Previous Deer</button>
+    <button id="next">Next Deer</button>
 
+    <br><br><br><br><br>
     <button id="submit">Submit</button>
-    <br><br><br>
+    <br><br>
 
     <button id="return">Return to Map</button>
     <br>
@@ -36,6 +45,7 @@
 
     <script src="../Firebase/firebase.js"></script>
     <script src="../reservationData.js"></script>
+    <script src="hunterLoggedIn.js"></script>
     <script src="script.js"></script>
 
 </body>
