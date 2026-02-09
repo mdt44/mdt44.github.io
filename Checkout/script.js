@@ -23,8 +23,8 @@ increase.onclick = function(){
 };
 
 document.getElementById("deerSubmit").onclick = function(){
-    addData(document.getElementById("id").value);
-    window.location.replace("https://mdt44.github.io/Hunter/hunter.html");
+    stage = 1;
+    
 };
 
 
