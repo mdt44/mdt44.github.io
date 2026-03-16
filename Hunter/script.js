@@ -52,6 +52,13 @@ async function addHunter(spot){
         .collection("dates")
         .doc(thisDate);
 
+    const hunterIDRef = db
+        .collection("reserved")
+        .doc("hunters")
+        .collection("hunterID")
+        .doc("h" + hID);
+
+
     await hunterRef.set({
         cells: firebase.firestore.FieldValue.arrayUnion(spot)
     }, { merge: true });

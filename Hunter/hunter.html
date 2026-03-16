@@ -9,9 +9,17 @@
 <body>
 
     <div class="interface">
-        <button class="side" id="nextMap">Switch<br>Maps</button>
+        <div class="panel">
+            <button class="sideL" id="nextMap">Switch<br>Maps</button>
+            <button class="sideL" id="cancelCell">Cancel<br>Selection</button>
+            <div class="sideL">
+                <br>
+                <h3>Hunter Stats:</h3>
+                <p>0 deer caught<br>0 hours hunted</p>
+            </div>
+        </div>
         <canvas id="mapCanvas"></canvas>
-        <button class="side" id="cancelCell">Cancel<br>Selection</button>
+        <button class="sideR" id="checkoutAccess">Checkout</button>
     </div>
 
     <center>
@@ -19,13 +27,13 @@
         <button class="reserve" id="reserveCell">Reserve Cell</button>
     </center>
 
-    <button id="checkoutAccess">Go to Checkout</button>
 
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
 
     <script src="../Firebase/firebase.js"></script>
+    <script src="../hunterLoggedIn.js"></script>
     <script src="../reservationData.js"></script>
     <script src="script.js"></script>
 

@@ -13,39 +13,16 @@
     <h1>Login</h1>
 
     <h3>Enter your two-digit Hunter ID</h3>
-    <select id="hunterNumber">
-    <script>
-        let numberSelect = document.getElementById('hunterNumber');
-
-        for (var i = 0; i<=50; i++){
-            var opt = document.createElement('option');
-            opt.value = i;
-            opt.innerHTML = i;
-            numberSelect.appendChild(opt);
-        }
-    </script>
-    </select>
+    <select id="hunterNumber"></select>
     <br>
 
-    <h3>Enter your first name initial</h3>
-    <select id="hunterInitial">
-    <script>
-        const initials = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        let initialSelect = document.getElementById('hunterInitial');
-
-        for (var i = 0; i<initials.length; i++){
-            var opt = document.createElement('option');
-            opt.value = initials.charAt(i);
-            opt.innerHTML = initials.charAt(i);
-            initialSelect.appendChild(opt);
-        }
-    </script>
-    </select>
+    <h3 id="changeIt">Enter your first name initial</h3>
+    <select id="hunterInitial"></select>
     <br>
     
     <br><br><br>
 
-    <button id="submit">Submit</button>
+    <button id="submitID">Submit</button>
     <br><br><br>
 
     </center>
@@ -56,7 +33,7 @@
 
     <script src="../Firebase/firebase.js"></script>
     <script src="../reservationData.js"></script>
-    <script src="hunterLoggedIn"></script>
+    <script src="../hunterLoggedIn.js"></script>
     <script src="script.js"></script>
 
 </body>

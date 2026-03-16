@@ -3,6 +3,5 @@ if(!sessionStorage.getItem("hunterId")){
 }
 
 var loggedIn = false;
-var hunterIdLoggedIn = sessionStorage.getItem("hunterId");
-
+var hID = sessionStorage.getItem("hunterId");
 
