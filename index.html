@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <title>Hunter Reservations - Duke Forest DMAP</title>
+</head>
+<body>
+
+    <br>
+    <div class="box green">
+        <h1 class="title" >Hunter Login</h1>
+    </div>
+
+    <br><br>
+
+    <noscript>
+        <p class="question">Uh oh! Our site relies on JavaScript to function, and your device has disabled it. Please enable it to continue. If you need help, please search up the instructions for doing so on your particular web browser.</p>
+    </noscript>
+
+    <div class="box red">
+        <p class="question">Hunter ID (0-99):</p>
+        <center>
+            <input class="typing" type="number" id="hunterId"></input>
+        </center>
+
+        <p class="question">First Name:</p>
+        <center>
+            <input class="typing" type="text" id="hunterName"></input>
+        </center>
+
+        <br><br>
+    </div>
+
+    <center>
+        <button class="submit" id="login">Login</button>
+    </center>
+
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
+    
+    <script src="script/firebase.js"></script>
+    <script src="script/index.js"></script>
+
+</body>
+</html>

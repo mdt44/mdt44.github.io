@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/checkout.css">
+    <title>Hunter Reservations - Duke Forest DMAP</title>
+</head>
+<body>
+
+    <br>
+    <div class="box red">
+        
+        <p class="question"># of Doe Caught:</p>
+        <center>
+            <input class="typing" type="number" id="doe"></input>
+        </center>
+
+        <p class="question"># of Bucks Caught:</p>
+        <center>
+            <input class="typing" type="number" id="bucks"></input>
+        </center>
+
+        <p class="question"># of Button Bucks Caught:</p>
+        <center>
+            <input class="typing" type="number" id="buttonBucks"></input>
+        </center>
+
+        <p class="question" id="totalCaught">Total Caught: 0</p>
+
+    </div>
+
+    <center>
+        <button class="submit" id="checkout">Checkout</button>
+    </center>
+
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
+    
+    <script src="script/firebase.js"></script>
+    <script src="script/checkout.js"></script>
+
+</body>
+</html>

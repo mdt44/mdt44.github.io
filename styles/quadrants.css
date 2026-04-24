@@ -1,0 +1,36 @@
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 80vw;
+  aspect-ratio: 1020 / 776;
+  gap: 2px;
+}
+
+.piece {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    var(--mapDir);
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pieceText {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin: auto auto;
+}
+
+/* Positions using percentages */
+.p1 { background-position: 0% 0%; }
+.p2 { background-position: 50% 0%; }
+.p3 { background-position: 100% 0%; }
+
+.p4 { background-position: 0% 100%; }
+.p5 { background-position: 50% 100%; }
+.p6 { background-position: 100% 100%; }
